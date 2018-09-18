@@ -10,11 +10,12 @@ import './simTree.scss'
     var version = '0.0.1';
     var document = window.document;
     var defaultConfig = {
+        linkParent: false,
         response: {
             name: 'text',
             id: 'id',
             pid: 'parent',
-            checked: 'state.checked'
+            checked: 'checked'
         }
     };
     var err = function(msg) {
@@ -172,20 +173,20 @@ import './simTree.scss'
             var $outEl = $(document.createElement('ul'));
             var oLi, $li, hasChild;
             var asy = options.childNodeAsy ? 'asy' : '';
+            if (!options.check) { // 单选
+                tpl = tpl.replace('<i class="sim-tree-checkbox"></i>', '');
+            }
             for (; i < len; i++) {
                 item = data[i];
                 oLi = document.createElement('li');
                 hasChild = !!item.children;
-                if (!options.check) { // 单选
-                    tpl = tpl.replace('<i class="sim-tree-checkbox"></i>', '');
-                }
                 oLi.innerHTML = simTpl(tpl, {
                     asy: asy,
                     text: item[text],
                     spreadIcon: hasChild ? 'layui-icon-r' : 'hidden'
                 });
                 oLi.setAttribute('data-level', level);
-                oLi.setAttribute('data-id', item.id);
+                oLi.setAttribute('data-id', item[id]);
                 $li = $(oLi);
                 $li.data('data', item);
                 $outEl.append($li);
@@ -228,6 +229,10 @@ import './simTree.scss'
                 this.on('click', this.options.onClick);    
             }
 
+            if (this.options.onChange) {
+                this.on('change', this.options.onChange);    
+            }
+
             if (this.options.onSearch) {
                 this.on('search', this.options.onSearch);    
             }
@@ -267,17 +272,28 @@ import './simTree.scss'
         },
         // 点击节点
         clickNode: function($tar) {
+            var self = this;
             var $pli = $tar.parent();
             var $li = this.$el.find('li');
             var len = $li.length;
             var i = 0;
             var list = [];
-            var data;
+            var data, $childUl, $childCheck;
+            var isChange = false;
             if(this.options.check) {
-                this.doCheck($tar);
+                isChange = true;
+                this.doCheck($tar.find('.sim-tree-checkbox'));
+                if (this.options.linkParent) {
+                    $childUl = $pli.children('ul');
+                    $childCheck = $childUl.find('.sim-tree-checkbox');
+                    $.each($childCheck, function() {
+                        console.log($(this))
+                        self.doCheck($(this), $pli.data('checked'), true);
+                    });
+                }
                 for (; i < len; i++) {
                     data = $li.eq(i).data();
-                    if (data['checked']) {
+                    if (data['checked'] === true) {
                         list.push(data.data);
                     }
                 }
@@ -287,21 +303,71 @@ import './simTree.scss'
                 }
                 $tar.css('font-weight', 'bold');
                 $prevA = $tar;
-                list = [$pli.data('data')];
+                data = $pli.data('data');
+                list = [data];
+                if (this.sels) {
+                    isChange = !(this.sels[0] === data);
+                } else {
+                    isChange = true;
+                }
             }
             this.sels = list;
             this.trigger('click', list);
+            isChange && this.trigger('change', list);
         },
         // 多选设置选中状态
-        doCheck: function($tar, status) {
-            var $li = $tar.parent();
-            var $check = $tar.find('.sim-tree-checkbox');
-            if (status) {
-                $check.addClass('checked')
-            } else {
-                $check.toggleClass('checked');
+        doCheck: function($check, status, flag) {
+            var self = this;
+            var $li = $check.closest('li');
+            var $childUl, $childUlCheck;
+            var data = $li.data();
+            if (typeof status === 'undefined') {
+                status = !data.checked;
             }
-            $li.data('checked', $check.hasClass('checked'));
+            if (status === true) {
+                $check.removeClass('sim-tree-semi').addClass('checked');
+            } else if (status === false) {
+                $check.removeClass('checked sim-tree-semi');
+            } else if (status === 'semi') {
+                $check.removeClass('checked').addClass('sim-tree-semi');
+            }
+            $li.data('checked', status);
+            if (this.options.linkParent === true) {
+                !flag && this.setParentCheck($li);
+            }
+        },
+        
+        setParentCheck: function($li) {
+            var $pul = $li.parent('ul');
+            var $pli = $pul.parent('li');
+            var $lis = $pul.children('li');
+            var $plicheck = $pli.find('>a .sim-tree-checkbox');
+            var checked =[];
+            var maxLen = $lis.length;
+            var isChecked, checkedLen;
+            if (!$pli.length) return;
+            if ($li.find('>a .sim-tree-checkbox').hasClass('sim-tree-semi')) {
+                this.doCheck($plicheck, 'semi');
+                return;
+            }
+            // 获取同级的选中状态
+            $.each($lis, function () {
+                isChecked = $(this).data('checked');
+                isChecked === true && checked.push($(this));
+            });
+            checkedLen = checked.length;
+            // 如果选中长度跟li长度一样 则父级选中 
+            if (maxLen === checkedLen) {
+                this.doCheck($plicheck, true);
+            }
+            // 如果选中长度为0 则父级没选中 
+            if (!checkedLen) {
+                this.doCheck($plicheck, false);
+            }
+            // 如果没有全选中 则父级设置成半选状态
+            if (checkedLen >= 1 && checkedLen < maxLen) {
+                this.doCheck($plicheck, 'semi');
+            }
         },
         // 树搜索
         search: function(val) {
@@ -373,7 +439,7 @@ import './simTree.scss'
                 if (!$check.length) { // 单选
                     $a.css('font-weight', 'bold');
                 } else { // 多选
-                    self.doCheck($a, true);
+                    self.doCheck($check, true);
                 }
                 if (parseInt($li.data('level')) !== 1) { // 不是顶级的需要展开父节点
                     self.expandNode(data[self.options.response.pid]);
