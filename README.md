@@ -78,7 +78,7 @@ npm install sim-tree --save
     });
 ```
 ## 简单说明文档
-- [https://github.com/linjingming/sim-tree/doc/sim-tree.md]
+- [https://github.com/linjingming/sim-tree/blob/master/doc/sim-tree.md]
 
 ## 交流 & 提问
 - 提问： https://github.com/linjingming/sim-tree/issues
@@ -89,4 +89,4 @@ npm install sim-tree --save
 - 下拉树
 
 ## 关于作者
-- 个人主页
+- linjingming

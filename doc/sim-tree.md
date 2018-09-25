@@ -28,6 +28,7 @@ var oTree = simTree({
 ---|---|---
 el | string/jquery selecter|指定元素的选择器 或者jquery selecter
 check | Boolean | true 开启多选 默认值：false
+childNodeAsy | Boolean | true 开启子节点异步加载 默认值：false
 data | Array/Function|数据数据来源，详细例子见下文
 onClick | Function|点击节点的回调
 onChange | Function | 改变节点的回调
@@ -170,15 +171,16 @@ simTree({
 }
 simTree({
     el: '#demo',
+    childNodeAsy: true,
     data: function (obj, callback) {
         var id = obj.id; // 节点id
-        if (!id) {
+        if (!id) { // 加载顶级数据
             request({
                 url: 'tree.json'
             }).then(function (res) {
                 callback(res.data);
             })
-        } else {
+        } else { // 加载子节点
             request({
                 url: 'treeChild.json',
                 data: {
