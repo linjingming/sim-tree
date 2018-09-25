@@ -371,6 +371,7 @@ import './simTree.scss'
         },
         // 树搜索
         search: function(val) {
+            if (!this.$el) return;
             var val = $.trim(val);
             var $li = this.$el.find('li');
             var i = 0;

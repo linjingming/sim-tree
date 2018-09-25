@@ -1118,9 +1118,57 @@ var data2 = [{
 	"expand": false,
 	"checked": false
 }];
+var list = [{
+	"id": '350102000000',
+	"fid": '',
+	"name": "鼓楼区",
+	"children": [
+		{
+			"id": '350103000000',
+			"fid": '350102000000',
+			"name": "东街口"
+		  }
+	]
+  },
+  {
+	"id": '350103000000',
+	"fid": '',
+	"name": "台江区"
+  },
+  {
+	"id": '350104000000',
+	"fid": '',
+	"name": "仓山区"
+  }
+];
+var list = [{
+	"id": '350102000000',
+	"fid": '',
+	"name": "鼓楼区",
+},
+{
+	"id": '350103000000',
+	"fid": '350102000000',
+	"name": "东街口"
+},
+{
+	"id": '350103000000',
+	"fid": '',
+	"name": "台江区"
+},
+{
+	"id": '350104000000',
+	"fid": '',
+	"name": "仓山区"
+}];
 var tree = simTree({
     el: '#tree',
-    data: data,
+	data: list,
+	response: {
+		name: 'name',
+		id: 'id',
+		pid: 'fid'
+	},
 	//check: true,
 	onClick: function (item) {
 		console.log(item)
@@ -1151,6 +1199,7 @@ var tree2 = simTree({
 		this.setSelected(['200300010001']);
 	}
 });
+
 tree2.on('click', function(item) {
 	console.log('click2');
 });
@@ -1158,7 +1207,7 @@ tree2.on('done', function(item) {
 	console.log('done2');
 	console.log(this.getSelected());
 });
-
+tree2.destroy();
 $('#tree2-ser-submit').on('click', function() {
 	var val = $('#tree2-ser-int').val();
 	console.log(tree2)
@@ -1180,3 +1229,4 @@ $('#tree2-ser-submit').on('click', function() {
 // 		console.log(item)
 // 	}
 // });
+
