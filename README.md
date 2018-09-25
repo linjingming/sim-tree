@@ -7,7 +7,7 @@
 npm install sim-tree --save
 
 ## 简单使用
-![image](https://note.youdao.com/yws/public/resource/c388c5d31f70ef784dbddb6e11e120bd/xmlnote/4EC2776D27394FA6A453D816B4A9ACD2/1763)
+![demo图片](https://github.com/linjingming/sim-tree/blob/master/demo/demo1.png)
 ```html
     <div id="tree"></div>
 ```
