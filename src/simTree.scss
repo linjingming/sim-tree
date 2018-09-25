@@ -29,7 +29,15 @@ $color: #333;
     ul.none, li.none {
         display: none;
     }
-
+    li.disabled {
+        > a {
+            color: #aaa;
+            cursor: not-allowed;
+            .sim-tree-checkbox {
+                border-color: #eee;
+            }
+        }
+    }
     a {
         font-size: 14px;
         color: $color;

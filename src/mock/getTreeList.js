@@ -4,469 +4,470 @@ module.exports = function (req, res, next) {
       msg: '请求成功',
       data: [{
         "id": "1001",
-        "parent": "#",
+        "pid": "#",
         "text": "系统",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "disabled": true
     }, {
         "id": "10010001",
-        "parent": "1001",
+        "pid": "1001",
         "text": "用户信息",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010001",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "机构查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010002",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "机构导入",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010003",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "机构新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010004",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "机构修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010005",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "机构删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010006",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "用户查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010007",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "用户新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010008",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "用户修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010009",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "用户删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100010010",
-        "parent": "10010001",
+        "pid": "10010001",
         "text": "密码重置",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10010002",
-        "parent": "1001",
+        "pid": "1001",
         "text": "角色信息",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020001",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "角色查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020002",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "角色新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020003",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "角色修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020004",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "角色删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020005",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "权限查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020006",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "权限新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020007",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "权限修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100100020008",
-        "parent": "10010002",
+        "pid": "10010002",
         "text": "权限删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "1002",
-        "parent": "#",
+        "pid": "#",
         "text": "终端",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10020001",
-        "parent": "1002",
+        "pid": "1002",
         "text": "厂商型号",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010001",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "厂商查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010002",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "厂商新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010003",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "厂商修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010004",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "厂商删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010005",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "型号查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010006",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "型号新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010007",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "型号修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200010008",
-        "parent": "10020001",
+        "pid": "10020001",
         "text": "型号删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10020002",
-        "parent": "1002",
+        "pid": "1002",
         "text": "终端信息",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020001",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020002",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020003",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020004",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020005",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端导入",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020006",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "终端导出",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100200020007",
-        "parent": "10020002",
+        "pid": "10020002",
         "text": "任务查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "1003",
-        "parent": "#",
+        "pid": "#",
         "text": "资源",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10030001",
-        "parent": "1003",
+        "pid": "1003",
         "text": "应用管理",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010001",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "应用查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010002",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "应用新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010003",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "应用修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010004",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "应用删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010005",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "版本查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010006",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "版本新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010007",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "版本修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010008",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "版本删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300010009",
-        "parent": "10030001",
+        "pid": "10030001",
         "text": "文件管理",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10030002",
-        "parent": "1003",
+        "pid": "1003",
         "text": "参数管理",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020001",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "参数查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020002",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "参数新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020003",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "参数修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020004",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "参数删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020005",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "模版查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020006",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "模版新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020007",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "模版修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100300020008",
-        "parent": "10030002",
+        "pid": "10030002",
         "text": "模版删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "1004",
-        "parent": "#",
+        "pid": "#",
         "text": "任务",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "10040001",
-        "parent": "1004",
+        "pid": "1004",
         "text": "任务管理",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010001",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务查询",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010002",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务新增",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010003",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务修改",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010004",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务删除",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010005",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务终止",
         "icon": null,
         "data": null,
         "state": null
     }, {
         "id": "100400010006",
-        "parent": "10040001",
+        "pid": "10040001",
         "text": "任务恢复",
         "icon": null,
         "data": null,

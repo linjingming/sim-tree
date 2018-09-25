@@ -7,15 +7,17 @@ import './simTree.scss'
 })(typeof window !== 'undefined' ? window : this, function(window) {
     "use strict";
     var name = 'simTree';
-    var version = '0.0.1';
+    var version = '0.0.2';
     var document = window.document;
     var defaultConfig = {
         linkParent: false,
         response: {
-            name: 'text',
+            name: 'name',
             id: 'id',
-            pid: 'parent',
-            checked: 'checked'
+            pid: 'pid',
+            checked: 'checked',
+            expand: 'expand',
+            disabled: 'disabled'
         }
     };
     var err = function(msg) {
@@ -171,7 +173,7 @@ import './simTree.scss'
             var tpl = '<i data-type="{{asy}}" class="sim-tree-spread {{spreadIcon}}"></i><a href="javascript:;"><i class="sim-tree-checkbox"></i>{{text}}</a>';
             var isRootEle = ($el === this.$el);
             var $outEl = $(document.createElement('ul'));
-            var oLi, $li, hasChild;
+            var oLi, $li, hasChild, disabled;
             var asy = options.childNodeAsy ? 'asy' : '';
             if (!options.check) { // 单选
                 tpl = tpl.replace('<i class="sim-tree-checkbox"></i>', '');
@@ -180,6 +182,7 @@ import './simTree.scss'
                 item = data[i];
                 oLi = document.createElement('li');
                 hasChild = !!item.children;
+                disabled = item[response.disabled]
                 oLi.innerHTML = simTpl(tpl, {
                     asy: asy,
                     text: item[text],
@@ -187,6 +190,7 @@ import './simTree.scss'
                 });
                 oLi.setAttribute('data-level', level);
                 oLi.setAttribute('data-id', item[id]);
+                disabled && oLi.setAttribute('class', 'disabled');
                 $li = $(oLi);
                 $li.data('data', item);
                 $outEl.append($li);
@@ -195,7 +199,7 @@ import './simTree.scss'
                 }
             }
             len && $el.append($outEl);
-            isRootEle && $outEl.addClass('sim-tree');    
+            isRootEle && $outEl.addClass('sim-tree');   
             isRootEle && this.trigger('done', data);
         },
         /**
@@ -280,6 +284,7 @@ import './simTree.scss'
             var list = [];
             var data, $childUl, $childCheck;
             var isChange = false;
+            if ($pli.hasClass('disabled')) return;
             if(this.options.check) {
                 isChange = true;
                 this.doCheck($tar.find('.sim-tree-checkbox'));
@@ -454,6 +459,21 @@ import './simTree.scss'
         // 获取选中值
         getSelected: function() {
             return this.sels;
+        },
+        // 设置禁止选中
+        disableNode: function(id) {
+            var self = this;
+            var aId = id;
+            if (typeof(aId) === 'string' || typeof(aId) === 'number') {
+                aId = [aId];
+            }
+            if (!$.isArray(aId)) {
+                return;
+            }
+            $.each(aId, function (index, id) {
+                var $li = self.$el.find('[data-id=' + id + ']');
+                $li.addClass('disabled');
+            });
         },
         // 树销毁
         destroy: function() {

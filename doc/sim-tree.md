@@ -74,10 +74,11 @@ response: {
 #### oTree 返回对象，目前支持如下方法：
 1. getSelected()  返回选中节点
 2. setSelected(id) id(string/array)是选中节点的id  设置选中节点
-3. expandNode(id) 根据id展开某个节点
-4. search(val) val(string)是搜索的节点关键字 树内搜索
-5. destroy() 树销毁
-6. refresh(data) data(object) 节点数据 可选 树刷新
+3. disableNode(id) id(string/array)是选中节点的id  设置禁止操作某些节点
+4. expandNode(id) 根据id展开某个节点
+5. search(val) val(string)是搜索的节点关键字 树内搜索
+6. destroy() 树销毁
+7. refresh(data) data(object) 节点数据 可选 树刷新
 
 ### 使用列子
 
@@ -96,7 +97,8 @@ var nodes = [ //节点
     {
         name: '子结点1',
         id: '00010001',
-        pid: '0001'
+        pid: '0001',
+        disabled: true // 节点禁止操作
     },
     {
         name: '子结点1的1',
