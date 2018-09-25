@@ -16,28 +16,29 @@
     <script>
         var list = [{
                 "id": '350102000000',
-                "fid": '',
+                "pid": '',
                 "name": "鼓楼区",
             },
             {
                 "id": '350103000000',
-                "fid": '350102000000',
+                "pid": '350102000000',
                 "name": "东街口"
             },
             {
                 "id": '350104000000',
-                "fid": '350102000000',
+                "pid": '350102000000',
                 "name": "宝龙"
             },
             {
                 "id": '350103000000',
-                "fid": '',
+                "pid": '',
                 "name": "台江区"
             },
             {
                 "id": '350104000000',
-                "fid": '',
-                "name": "仓山区"
+                "pid": '',
+                "name": "仓山区",
+                "disabled": true
             }
         ];
         var tree = simTree({
@@ -45,11 +46,6 @@
             data: list,
             check: true,
             linkParent: true,
-            response: {
-                name: 'name',
-                id: 'id',
-                pid: 'fid'
-            },
             //check: true,
             onClick: function (item) {
                 console.log(item)

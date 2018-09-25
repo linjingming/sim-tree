@@ -18,6 +18,11 @@
     display: block; }
   .sim-tree ul.none, .sim-tree li.none {
     display: none; }
+  .sim-tree li.disabled > a {
+    color: #aaa;
+    cursor: not-allowed; }
+    .sim-tree li.disabled > a .sim-tree-checkbox {
+      border-color: #eee; }
   .sim-tree a {
     font-size: 14px;
     color: #333;
