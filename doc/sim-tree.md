@@ -28,6 +28,7 @@ var oTree = simTree({
 ---|---|---
 el | string/jquery selecter|指定元素的选择器 或者jquery selecter
 check | Boolean | true 开启多选 默认值：false
+linkParent | Boolean | true 开启父子关联 默认值 false
 childNodeAsy | Boolean | true 开启子节点异步加载 默认值：false
 data | Array/Function|数据数据来源，详细例子见下文
 onClick | Function|点击节点的回调

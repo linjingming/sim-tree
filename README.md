@@ -63,6 +63,7 @@ npm install sim-tree --save
             pid: 'fid'
         },
         //check: true, // true 开启多选
+        //linkParent: true, // 父子关联
         // 点击节点触发
         onClick: function (item) {
             console.log(item);
@@ -82,7 +83,7 @@ npm install sim-tree --save
 
 ## 交流 & 提问
 - 提问： https://github.com/linjingming/sim-tree/issues
-- QQ 群、微信群 （及时反馈）
+- 点击链接加入群聊【simTree】：https://jq.qq.com/?_wv=1027&k=5dKG0tn （及时反馈）
 
 ## todo
 - 根据节点数据状态初始化设置 展开 或者选中
