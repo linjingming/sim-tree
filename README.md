@@ -3,10 +3,15 @@
 
 > 没有那么多复杂功能，回归简单
 
-## 安装
+## npm直接安装
 npm install sim-tree --save
+## 直接下载
+- 地址1:https://github.com/linjingming/sim-tree/archive/V0.0.2.zip
 
+- 地址2:https://github.com/linjingming/sim-tree/archive/V0.0.2.zip
 ## 简单使用
+引入dist目录下的simTree.js 和simTree.js
+
 ![demo图片](https://github.com/linjingming/sim-tree/blob/master/demo/demo1.png)
 ```html
     <div id="tree"></div>
