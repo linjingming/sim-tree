@@ -16,7 +16,7 @@ import './simTree.scss'
             id: 'id',
             pid: 'pid',
             checked: 'checked',
-            expand: 'expand',
+            open: 'open',
             disabled: 'disabled'
         }
     };
@@ -43,7 +43,8 @@ import './simTree.scss'
         this.options = $.extend(true, {}, defaultConfig, options);
         this.init();
     };
-    var $prevA;
+    //初始化时候 用 checkId 存储选中的Id, 用openId 存储要展开的节点Id，
+    var $prevA, checkId = [], openId = [];
     Class.prototype = {
         version: version,
         constructor: Class,
@@ -197,10 +198,18 @@ import './simTree.scss'
                 if (hasChild) {
                     this.doRender($li, item.children, level + 1);
                 }
+                item[response.checked] && checkId.push(item[id]);
+                item[response.open] && openId.push(item[id]);
             }
             len && $el.append($outEl);
-            isRootEle && $outEl.addClass('sim-tree');   
-            isRootEle && this.trigger('done', data);
+            if (isRootEle) {
+                $outEl.addClass('sim-tree');
+                this.trigger('done', data);
+                $.each(openId,  function (index, id) {
+                    self.expandNode(id);
+                });
+                this.setSelected(checkId);
+            }
         },
         /**
          * 
@@ -481,6 +490,7 @@ import './simTree.scss'
             for (var key in this) {
                 delete this[key]
             }
+            delete this;
         },
         // 树刷新
         refresh: function(data) {

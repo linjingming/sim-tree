@@ -807,6 +807,7 @@ var tree2 = simTree({
 	response: {
 		name: 'text'
 	},
+	linkParent: true,
     data: function(node, cb) {
 		$.get('api/getTreeList').then(function (res) {
 			cb(res.data);
@@ -854,4 +855,3 @@ $('#tree2-ser-submit').on('click', function() {
 // 		console.log(item)
 // 	}
 // });
-

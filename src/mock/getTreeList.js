@@ -8,22 +8,23 @@ module.exports = function (req, res, next) {
         "text": "系统",
         "icon": null,
         "data": null,
-        "state": null,
-        "disabled": true
+        "state": null
     }, {
         "id": "10010001",
         "pid": "1001",
         "text": "用户信息",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "open": true
     }, {
         "id": "100100010001",
         "pid": "10010001",
         "text": "机构查询",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "checked": true
     }, {
         "id": "100100010002",
         "pid": "10010001",
@@ -37,14 +38,16 @@ module.exports = function (req, res, next) {
         "text": "机构新增",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "checked": true
     }, {
         "id": "100100010004",
         "pid": "10010001",
         "text": "机构修改",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "checked": true
     }, {
         "id": "100100010005",
         "pid": "10010001",
@@ -177,7 +180,8 @@ module.exports = function (req, res, next) {
         "text": "厂商新增",
         "icon": null,
         "data": null,
-        "state": null
+        "state": null,
+        "checked": true
     }, {
         "id": "100200010003",
         "pid": "10020001",

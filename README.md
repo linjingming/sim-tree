@@ -106,7 +106,7 @@ npm install sim-tree --save
 - 点击链接加入群聊【simTree】：https://jq.qq.com/?_wv=1027&k=5dKG0tn （及时反馈）
 
 ## todo
-- 根据节点数据状态初始化设置 展开 或者选中
+- 添加loading效果
 - 下拉树
 
 ## 关于作者

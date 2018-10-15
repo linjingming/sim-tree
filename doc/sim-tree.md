@@ -34,20 +34,57 @@ data | Array/Function|数据数据来源，详细例子见下文
 onClick | Function|点击节点的回调
 onChange | Function | 改变节点的回调
 done | Function|树加载完成后回调
-response | Object|用于对返回的数据字段名称的自定义
+response | Object| 用于对返回的数据字段名称的自定义
+
 
 > response 用于对返回的数据字段名称的自定义
 
 ```
+// response默认配置为
 response: {
-    name: "NAME",
-    id: "RESOURCE_ID",
-    pid: "PARENT_ID"
+    name: 'name', // 节点名称字段
+    id: 'id', // 节点id字段
+    pid: 'pid', // 父节点id字段
+    checked: 'checked', // 节点选中字段
+    open: 'open', // 节点展开字段
+    disabled: 'disabled' // 禁止操作字段
+}
+// 对应返回数据格式如下， 如果返回格式如下则response不用配置
+{
+  code: 0,
+  msg: "返回成功",
+  data: [
+    {
+        "name": '父节点1',
+        "id": '0001',
+        "pid": '',
+        "open": true // true 展开
+    },
+    {
+        "name": '子节点1',
+        "id": '00010001',
+        "pid": '0001',
+        "checked": true // true 选中
+    },
+    {
+         "name": '子节点2',
+        "id": '00010002',
+        "pid": '0001',
+        "disabled": true // true 禁止操作
+    }
+  ]
 }
 ```
-> 你接口返回的数据格式，比如遵循 response 对应的字段名称。比如上面对应的格式为：
+> 如果你接口返回的数据格式如下，则response需要配置：
 
 ```
+// response配置为
+response: {
+    name: 'NAME', // 节点名称
+    id: 'RESOURCE_ID', //
+    pid: 'PARENT_ID'
+}
+// 对应数据格式
 {
   code: 0,
   msg: "返回成功",

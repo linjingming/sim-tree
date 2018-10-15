@@ -1,7 +1,7 @@
 {
   "name": "sim-tree",
-  "version": "0.0.2",
-  "description": "a simple tree",
+  "version": "0.0.3",
+  "description": "a simple tree || 一个操作简单的基于jquery写的树展示插件,支持异步展示子节点,没有那么多复杂功能，回归简单的配置及操作",
   "main": "dist/simTree.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
