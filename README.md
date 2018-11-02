@@ -15,6 +15,7 @@ npm install sim-tree --save
 ![demo图片](https://github.com/linjingming/sim-tree/blob/master/demo/demo1.png)
 ```html
     <div id="tree"></div>
+    <div id="tree2"></div>
 ```
 ```js
     // 数据格式1 有children
@@ -85,8 +86,20 @@ npm install sim-tree --save
 
         }
     });
+    // 绑定事件也可以这样写
+    tree.on('click', function (item) {
+        console.log(item);
+    });
+    // 改变节点触发
+    tree.on('change', function (item) {
+        console.log(item);
+    });
+    // 树生成后触发
+    tree.on('done', function (item) {
+        console.log(item);
+    });
     // 写法2
-    var tree = $('#tree).simTree({
+    var tree2 = $('#tree2).simTree({
         data: list,
         //check: true, // true 开启多选
         //linkParent: true, // 父子关联
@@ -103,18 +116,6 @@ npm install sim-tree --save
 
         }
     });
-    // 绑定事件也可以这样写
-    tree.on('click', function (item) {
-        console.log(item);
-    });
-    // 改变节点触发
-    tree.on('change', function (item) {
-        console.log(item);
-    });
-    // 树生成后触发
-    tree.on('done', function (item) {
-        console.log(item);
-    })
 ```
 ## 简单说明文档
 - [https://github.com/linjingming/sim-tree/blob/master/doc/sim-tree.md]
