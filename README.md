@@ -66,6 +66,7 @@ npm install sim-tree --save
         "pid": '',
         "name": "仓山区"
     }];
+    // 写法1
     var tree = simTree({
         el: '#tree',
         data: list,
@@ -84,7 +85,25 @@ npm install sim-tree --save
 
         }
     });
-    ----或者这样----
+    // 写法2
+    var tree = $('#tree).simTree({
+        data: list,
+        //check: true, // true 开启多选
+        //linkParent: true, // 父子关联
+        // 点击节点触发
+        onClick: function (item) {
+            console.log(item);
+        },
+        // 改变节点触发
+        onChange: function (item) {
+            console.log(item);
+        },
+        // 树生成后触发
+        done: function (data) {
+
+        }
+    });
+    ----绑定事件也可以这样写----
     // 点击节点触发
     tree.on('click', function (item) {
         console.log(item);

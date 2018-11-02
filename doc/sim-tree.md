@@ -1,5 +1,5 @@
 # 核心方法
-### 语法：oTree = simTree(options)
+### 语法：oTree = simTree(options) 或者 oTree = $(selector).simTree(options);
 
 ```
 // 示列
@@ -21,6 +21,24 @@ var oTree = simTree({
     done: function () {
     }
 });
+// 或者
+var oTree = $('#demo1').simTree({
+    check: true, // 开启多选
+    data: function (obj, callback) {
+        request({
+            url: 'getTreeList', // ajax请求地址
+        }).then(function (res) {
+            // res.data 树数据
+            callback(res.data);
+        })
+    }
+    // 点击节点回调
+    onClick: function (item) { // item节点数据
+    },
+    // 树加载完成后回调
+    done: function () {
+    }
+})
 ```
 #### ==options==是一个对象参数，目前 tree 模块所支持的全部参数如下：
 

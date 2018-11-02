@@ -43,8 +43,20 @@
                 "disabled": true
             }
         ];
-        var tree = simTree({
-            el: '#tree',
+        // var tree = simTree({
+        //     el: '#tree',
+        //     data: list,
+        //     check: true,
+        //     linkParent: true,
+        //     //check: true,
+        //     onClick: function (item) {
+        //         console.log(item)
+        //     },
+        //     onChange: function (item) {
+        //         console.log(item)
+        //     }
+        // });
+        $('#tree').simTree({
             data: list,
             check: true,
             linkParent: true,
@@ -55,7 +67,7 @@
             onChange: function (item) {
                 console.log(item)
             }
-        });
+        })
     </script>
 </body>
 

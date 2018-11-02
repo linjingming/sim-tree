@@ -499,4 +499,8 @@ import './simTree.scss'
         }
     }
     window[name] = Class; 
+    $.fn[name] = function (opt) {
+        opt = $.extend(true, {el: this}, opt);
+        return Class(opt);
+    };
 });

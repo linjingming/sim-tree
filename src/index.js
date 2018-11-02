@@ -801,8 +801,32 @@ var tree = simTree({
 });
 tree.disableNode(['350103000000', '350104000000']);
 
-var tree2 = simTree({
-	el: '#tree2',
+// var tree2 = simTree({
+// 	el: '#tree2',
+// 	check: true,
+// 	response: {
+// 		name: 'text'
+// 	},
+// 	linkParent: true,
+//     data: function(node, cb) {
+// 		$.get('api/getTreeList').then(function (res) {
+// 			cb(res.data);
+// 		});
+// 	},
+// 	onClick: function (item) {
+// 		console.log(item)
+// 	},
+// 	onChange: function (item) {
+// 		console.log(item)
+// 	},
+// 	done: function(data) {
+// 		// this.off('click');
+// 		console.log(data);
+// 		this.setSelected(['200300010001']);
+// 	}
+// });
+
+var tree2 = $('#tree2').simTree({
 	check: true,
 	response: {
 		name: 'text'
@@ -824,7 +848,7 @@ var tree2 = simTree({
 		console.log(data);
 		this.setSelected(['200300010001']);
 	}
-});
+})
 
 tree2.on('click', function(item) {
 	console.log('click2');
