@@ -103,8 +103,7 @@ npm install sim-tree --save
 
         }
     });
-    ----绑定事件也可以这样写----
-    // 点击节点触发
+    // 绑定事件也可以这样写
     tree.on('click', function (item) {
         console.log(item);
     });
