@@ -187,7 +187,7 @@ import './simTree.scss'
                 oLi.innerHTML = simTpl(tpl, {
                     asy: asy,
                     text: item[text],
-                    spreadIcon: hasChild ? 'layui-icon-r' : 'hidden'
+                    spreadIcon: hasChild ? 'sim-icon-r' : 'hidden'
                 });
                 oLi.setAttribute('data-level', level);
                 oLi.setAttribute('data-id', item[id]);
@@ -209,6 +209,10 @@ import './simTree.scss'
                     self.expandNode(id);
                 });
                 this.setSelected(checkId);
+            } else {
+                // 异步加载移除loading 
+                this.hideLoading($el.find('.sim-tree-spread'));
+                $outEl.addClass('show');
             }
         },
         /**
@@ -252,12 +256,20 @@ import './simTree.scss'
         },
         // 展开或收起
         spread: function($el) {
-            if ($el.hasClass('layui-icon-r')) {
+            if ($el.hasClass('sim-icon-r')) {
                 this.doSpread($el, true);    
             } else {
                 this.doSpread($el, false);
             }
             
+        },
+        // 添加loading
+        showLoading: function($el) {
+            $el.addClass('sim-loading');
+        },
+        // 移除loading
+        hideLoading: function($el) {
+            $el.removeClass('sim-loading');
         },
         /**
          *  展开或者收起
@@ -270,16 +282,16 @@ import './simTree.scss'
             var item = $pli.data('data');
             if (!item.children) return;
             if (status) {
-                $el.removeClass('layui-icon-r').addClass('layui-icon-d');
+                $el.removeClass('sim-icon-r').addClass('sim-icon-d');
                 // 异步加载子节点
                 if ($el.data('type') === 'asy' && $.isFunction(this.data)) {
+                    this.showLoading($el);
                     this.data($pli.data('data'), this.dataCallback.bind(this, $pli));
-                    $ul = $pli.children('ul');
                     $el.data('type', '');
                 }
                 $ul.addClass('show');
             } else {
-                $el.removeClass('layui-icon-d').addClass('layui-icon-r');
+                $el.removeClass('sim-icon-d').addClass('sim-icon-r');
                 $ul.removeClass('show');
             }
         },

@@ -122,7 +122,6 @@ npm install sim-tree --save
 - 点击链接加入群聊【simTree】：https://jq.qq.com/?_wv=1027&k=5dKG0tn （及时反馈）
 
 ## todo
-- 添加loading效果
 - 下拉树
 
 ## 关于作者

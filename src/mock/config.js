@@ -5,8 +5,8 @@ module.exports = function (app) {
   app.use(function(req, res, next) {
     let filePath = '';
     let arr = req.url.split(stPath + '/');
-    if (arr.length) {
-      filePath = path.join(__dirname, arr[1] + '.js').replace(/\//g, '_');
+    if (arr.length > 1) {
+      filePath = path.join(__dirname, arr[1].split('?').shift() + '.js').replace(/\//g, '_');
     }
     fs.exists(filePath, function (exists) {
       if (exists) {

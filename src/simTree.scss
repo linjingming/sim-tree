@@ -62,8 +62,16 @@ $color: #333;
         cursor: pointer;
     }
 
-    .layui-icon-d:before,
-    .layui-icon-r:before {
+    .sim-loading {
+        background: url('loading.gif') center center no-repeat;
+        &.sim-icon-d:before,
+        &.sim-icon-r:before {
+            display: none;
+        }
+    }
+
+    .sim-icon-d:before,
+    .sim-icon-r:before {
         content: '';
         display: inline-block;
         width: 0;
@@ -73,13 +81,13 @@ $color: #333;
         position: relative;
     }
 
-    .layui-icon-r:before {
+    .sim-icon-r:before {
         border-left-width: 8px;
         border-left-color: $color;
         top: (26px - 6*2px) / 2;
     }
 
-    .layui-icon-d:before {
+    .sim-icon-d:before {
         margin-left: -4px;
         border-top-color: $color;
         top: (26px - 6*2px) / 2 + 6px/2;
@@ -90,6 +98,7 @@ $color: #333;
         border: 1px solid #ccc;
         height: 16px;
         width: 16px;
+        border-radius: 3px;
         box-sizing: border-box;
         text-align: center;
         line-height: 16px;
