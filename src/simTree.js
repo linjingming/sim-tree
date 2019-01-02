@@ -404,6 +404,7 @@ import './simTree.scss'
             var len = $li.length;
             var text, $mLi, data;
             var res = [];
+            var reg = new RegExp(val, 'i');
             $li.hide().children('.sim-tree-spread').addClass('hidden');
             for (; i < len; i++) {
                 $mLi = $li.eq(i);
@@ -414,7 +415,7 @@ import './simTree.scss'
                     if (data.children) {
                         $mLi.children('.sim-tree-spread').removeClass('hidden');
                     }
-                } else if (text.indexOf(val) !== -1) {
+                } else if (text.search(reg) !== -1) {
                     if (parseInt($mLi.data('level')) !== 1) { // 不是顶级的需要展开父节点
                         this.expandNode(data[this.options.response.pid]);
                     }
