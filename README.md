@@ -96,7 +96,7 @@ npm install sim-tree --save
         console.log(item);
     });
     // 写法2
-    var tree2 = $('#tree2).simTree({
+    var tree2 = $('#tree2').simTree({
         data: list,
         //check: true, // true 开启多选
         //linkParent: true, // 父子关联
