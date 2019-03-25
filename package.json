@@ -1,6 +1,6 @@
 {
   "name": "sim-tree",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "a simple tree || A simple, jquery-based tree display plug-in that supports asynchronous presentation of child nodes, has less complex functionality, and returns to simple configuration and operations || 一个操作简单的基于jquery写的树展示插件,支持异步展示子节点,没有那么多复杂功能，回归简单的配置及操作",
   "main": "dist/simTree.js",
   "scripts": {
