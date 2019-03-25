@@ -211,8 +211,10 @@ import './simTree.scss'
                 this.setSelected(checkId);
             } else {
                 // 异步加载移除loading 
-                this.hideLoading($el.find('.sim-tree-spread'));
-                $outEl.addClass('show');
+                if (options.childNodeAsy) {
+                    this.hideLoading($el.find('.sim-tree-spread'));
+                    $outEl.addClass('show');
+                }
             }
         },
         /**
@@ -313,7 +315,6 @@ import './simTree.scss'
                     $childUl = $pli.children('ul');
                     $childCheck = $childUl.find('.sim-tree-checkbox');
                     $.each($childCheck, function() {
-                        console.log($(this))
                         self.doCheck($(this), $pli.data('checked'), true);
                     });
                 }
