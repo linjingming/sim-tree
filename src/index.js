@@ -19,18 +19,36 @@ var list = [{
 	"pid": '',
 	"name": "仓山区"
 }];
-// var tree = simTree({
-//     el: '#tree',
-// 	data: list,
-// 	//check: true,
-// 	onClick: function (item) {
-// 		console.log(item)
-// 	},
-// 	onChange: function (item) {
-// 		console.log(item)
-// 	}
-// });
-// tree.disableNode(['350103000000', '350104000000']);
+
+var tree = simTree({
+    el: '#tree',
+	data: list,
+	linkParent: false,
+	check: true,
+	onClick: function (item) {
+		console.log(item)
+	},
+	onChange: function (item) {
+		console.log(item)
+	}
+});
+$('#tree2-ser-submit').on('click', function() {
+	var val = $('#tree2-ser-int').val();
+	console.log(tree)
+	tree.search(val);
+});
+var tree1 = simTree({
+    el: '#tree',
+	data: list,
+	//check: true,
+	onClick: function (item) {
+		console.log(item)
+	},
+	onChange: function (item) {
+		console.log(item)
+	}
+});
+tree.disableNode(['350103000000', '350104000000']);
 
 // var tree2 = simTree({
 // 	el: '#tree2',
@@ -94,27 +112,28 @@ var list = [{
 // 	console.log(tree2)
 // 	tree2.search(val);
 // });
-// var tree3 = simTree({
-// 	el: '#tree3',
-// 	check: true,
-// 	response: {
-// 		name: 'text'
-// 	},
-// 	childNodeAsy: true,
-//     data: function(node, cb) {
-// 		var id = node.id; // 节点id
-//         if (!id) { // 加载顶级数据
-//             $.get('api/getTreeList').then(function (res) {
-// 				cb(res.data);
-// 			});
-//         } else { // 加载子节点
-//             $.get('api/getTreeChildList', {id: id}).then(function (res) {
-// 				cb(res.data);
-// 			});
-//         }
-// 	},
-// 	//check: true,
-// 	onClick: function (item) {
-// 		console.log(item)
-// 	}
-// });
+// 异步加载子节点
+var tree3 = simTree({
+	el: '#tree3',
+	check: true,
+	response: {
+		name: 'title'
+	},
+	childNodeAsy: true,
+    data: function(node, cb) {
+		var id = node.id; // 节点id
+        if (!id) { // 加载顶级数据
+            $.get('api/getTreeList').then(function (res) {
+				cb(res.data);
+			});
+        } else { // 加载子节点
+            $.get('api/getTreeList', {id: id}).then(function (res) {
+				cb(res.data);
+			});
+        }
+	},
+	//check: true,
+	onClick: function (item) {
+		console.log(item)
+	}
+});
