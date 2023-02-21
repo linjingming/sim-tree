@@ -430,16 +430,18 @@ import './simTree.scss'
         // 展开某节点
         expandNode: function(id) {
             var $li = id.addClass ? id : this.$el.find('[data-id=' + id + ']');
-            var data = $li.data('data');
-            var pid = data[this.options.response.pid];
-            var $spread = $li.children('.sim-tree-spread');
-            var level = parseInt($li.data('level'));
-            if (data.children && $spread.length) {
-                $spread.removeClass('hidden');
-                this.doSpread($spread, true);
-            }
-            if (level !== 1) {
-                this.expandNode(pid);
+            if ($li.length > 0) {
+                var data = $li.data('data');
+                var pid = data[this.options.response.pid];
+                var $spread = $li.children('.sim-tree-spread');
+                var level = parseInt($li.data('level'));
+                if (data.children && $spread.length) {
+                    $spread.removeClass('hidden');
+                    this.doSpread($spread, true);
+                }
+                if (level !== 1) {
+                    this.expandNode(pid);
+                }
             }
         },
         // 设置选中
